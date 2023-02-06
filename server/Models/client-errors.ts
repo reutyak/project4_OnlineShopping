@@ -10,7 +10,7 @@ export class ClientError {
 }
 
 export class IdNotFoundError extends ClientError {
-    public constructor(id: number) {
+    public constructor(id: any) {
         super(404, `id ${id} not found`);
         //this.status = 404;
         //this.message = `id ${id} not found`;
