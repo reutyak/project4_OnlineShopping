@@ -21,10 +21,10 @@ const addProduct = (product:IProductModel):Promise<IProductModel>=>{
     return product.save()
 }
 
-const updateProduct = async(product:IProductModel):Promise<IProductModel>=>{
+const updateProduct = async(_id:any,product:IProductModel):Promise<IProductModel>=>{
     const errors = product.validateSync();
     if (errors) throw new ValidationError(errors.message);
-    const updateProduct = await ProductModel.findByIdAndUpdate(product._id,product,{returnOriginal:false}).exec();
+    const updateProduct = await ProductModel.findByIdAndUpdate(_id,product,{returnOriginal:false}).exec();
     if (!updateProduct) throw new IdNotFoundError(product._id)
     return updateProduct
 }
