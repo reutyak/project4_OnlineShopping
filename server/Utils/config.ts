@@ -19,12 +19,12 @@ const password = "12345678";
 
 class DevelopmentConfig extends Config{
     public isDevelopment = true;
-    public connectionString = `mongodb://localhost:27017/productsList`;
+    public connectionString = `mongodb://localhost:27017/onlineSuper`;
 };
 
 class ProductionConfig extends Config{
     public isDevelopment = false;
-    public connectionString = `mongodb://${userName}:${password}@localhost:27017`;
+    public connectionString = `mongodb://${userName}:${password}@localhost:27017/onlineSuper`;
 };
 const config = process.env.MODE_ENV==="production"?new ProductionConfig: new DevelopmentConfig;
 export default config

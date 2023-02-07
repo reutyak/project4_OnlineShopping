@@ -1,3 +1,4 @@
+import  mongoose from 'mongoose';
 //it's just example init you have to change as needed
 import { create_firstDBtable, create_secondDBtable } from "./Utils/init";
 // Main file in the SERVER 
@@ -9,8 +10,10 @@ import dotenv from "dotenv";
 // import firstController from "./Routes/firstController";
 // import secondController from "./Routes/secondController";
 import ErrorHandler from "./middleware/route-not-found";
-let db
-const {MongoClient} = require("mongodb");
+import productsController from "./Routes/productsController";
+import connection from './Utils/dal';
+// let db
+// const {MongoClient} = require("mongodb");
 dotenv.config(); 
 
 // dal_mysql.execute(create_firstDBtable);
@@ -19,16 +22,16 @@ const server = express();
 const currentPort = process.env.PORT;
 server.use(express.json());
 server.use(cors());
-// server.use("/first", firstController)
+server.use("/product", productsController)
 // server.use("/second", secondController)
 server.use("*", ErrorHandler);
-async function start(){
-    const client = new MongoClient(config.connectionString);
-    await client.connect();
-    db = client.db();
-    db.collection("products");
-    server.listen(currentPort, () => {console.log(`listening on http://localhost:${currentPort}`)} )
-};
-start();
-// server.listen(currentPort, () => {console.log(`listening on http://localhost:${currentPort}`)} )
+// async function connection(){
+//     // const client = new MongoClient(config.connectionString);
+//     // await client.connect();
+//     mongoose.set('strictQuery', false);
+//     mongoose.connect(config.connectionString);
+//     server.listen(currentPort, () => {console.log(`listening on http://localhost:${currentPort}`)} )
+// };
+connection();
+server.listen(currentPort, () => {console.log(`listening on http://localhost:${currentPort}`)} )
 

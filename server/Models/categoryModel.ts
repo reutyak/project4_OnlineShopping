@@ -1,16 +1,16 @@
-import {model, Schema, Document} from "mongoose";
+// import {model, Schema, Document} from "mongoose";
 
-export interface ICategoryModel extends Document{
- name: string;
-};
+// export interface ICategoryModel extends Document{
+//  name: string;
+// };
 
-const categorySchema = new Schema<ICategoryModel>({
-    name:{
-        type:String,
-        required:[true, "missing name"],
-        unique:true
-    },
+// const categorySchema = new Schema<ICategoryModel>({
+//     name:{
+//         type:String,
+//         required:[true, "missing name"],
+//         unique:true
+//     },
     
-},{versionKey:false});
+// },{versionKey:false});
 
-export const categoryModel = model<ICategoryModel>("categoryModel",categorySchema,"categories");
+// export const categoryModel = model<ICategoryModel>("categoryModel",categorySchema,"categories");

@@ -15,26 +15,51 @@ productsController.get(
   "/single/:id",
   async (request: Request, response: Response, next: NextFunction) => {
     const productID = request.params.id;
-    response.status(200).json(await productsLogic.getSingleProductByID(productID));
+    try{
+    const theProduct = await productsLogic.getSingleProductByID(productID);
+      response.status(200).json(theProduct)
+    }catch(err){
+      return response.status(400).json({
+        success: false,
+      });
+    }
   }
 );
 
   productsController.post("/",async (request: Request, response: Response, next: NextFunction) => {
-     const newProduct = request.body;
+    try{ 
+    const newProduct = request.body;
      response.status(201).json(await productsLogic.addProduct(newProduct));
+    }catch(err){
+      return response.status(400).json({
+        success: false,
+      });
+    }
   })
 
   // delete information from DB
   productsController.delete("/delete/:id", async (request: Request, response: Response, next: NextFunction) => {
   const idProd = request.params.id;
+  try{
   response.status(204).json( await productsLogic.deleteProduct(idProd))
+  }catch(err){
+    return response.status(400).json({
+      success: false,
+    });
+  }
 })
 
   //update value
   productsController.put("/update/:id",async (request: Request, response: Response, next: NextFunction) => {
     const idProd = request.params.id;
     const updateProduct =request.body;
+    try{
 response.status(201).json(await productsLogic.updateProduct(idProd,updateProduct));
+    }catch(err){
+      return response.status(400).json({
+        success: false,
+      });
+    }
   })
 
 
