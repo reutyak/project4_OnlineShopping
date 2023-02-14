@@ -12,6 +12,7 @@ import categoryController from './Routes/categoryController';
 import dal from './Utils/dal';
 import userController from './Routes/userController';
 import shCartController from './Routes/shCartController';
+import itemsController from './Routes/itemController';
 dotenv.config(); 
 const server = express();
 const currentPort = process.env.PORT;
@@ -21,6 +22,7 @@ server.use("/product", productsController);
 server.use("/category", categoryController);
 server.use("/user", userController);
 server.use("/cart", shCartController)
+server.use("/item", itemsController)
 server.use("*", ErrorHandler);
 // async function connection(){
 //     // const client = new MongoClient(config.connectionString);

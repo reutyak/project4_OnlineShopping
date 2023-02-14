@@ -46,8 +46,7 @@ shCartController.get(
      response.status(201).json(await shoppingCartLogic.addShCart(newCart));
     }catch(err){
       return response.status(400).json({
-        // success: false,
-        err
+        success: false,
       });
     }
   })

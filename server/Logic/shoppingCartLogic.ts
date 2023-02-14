@@ -9,7 +9,7 @@ const getAllShCarts = async (): Promise<IShoppingCartModel[]> => {
 
 
 const getSingleShCartByID = async (_id: string): Promise<IShoppingCartModel> => {
-    const myShCarts = await ShoppingCartModel.findById(_id).exec();
+    const myShCarts = await ShoppingCartModel.findById(_id).populate("CustomerID").exec();
     // if (!product) throw new IdNotFoundError(id)
     // if (!category){
     //     return
@@ -19,7 +19,7 @@ const getSingleShCartByID = async (_id: string): Promise<IShoppingCartModel> => 
 }
 
 const getShCartByEmail = async (userEmail:string):Promise<IShoppingCartModel[]>=>{
-    const user =await ShoppingCartModel.find({userName: userEmail}).exec();
+    const user =await ShoppingCartModel.find({userName: userEmail}).populate("CustomerID").exec();
     return user
 };
 
