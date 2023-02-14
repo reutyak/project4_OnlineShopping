@@ -1,16 +1,16 @@
-import { IdNotFoundError, ValidationError } from '../Models/client-errors';
+import mongoose from 'mongoose';
 import productModel from '../Models/productModel';
 const products = require('../schema/productSchema');
 
 // // functions( async / await ) for getting data from DB
 const getAllProducts = async (): Promise<productModel[]> => {
-    return await products.find()
+    return await products.find().populate("category").exec();
      ;
 }
 
 
-const getSingleProductByID = async (id: string): Promise<productModel> => {
-    const product = await products.findById(id).exec();
+const getSingleProductByID = async (_id: string): Promise<productModel> => {
+    const product = await products.findById(_id).exec();
     // if (!product) throw new IdNotFoundError(id)
     if (!product){
         return
@@ -18,6 +18,11 @@ const getSingleProductByID = async (id: string): Promise<productModel> => {
         return product;
     }
 }
+
+const getProductByCategory = async (productCat:string):Promise<productModel[]>=>{
+    const product =await products.find({productCategory: productCat}).populate("category").exec();
+    return product
+};
 
 const addProduct = async (product:productModel):Promise<productModel>=>{
     return await new products(product).save();
@@ -40,6 +45,7 @@ const deleteProduct = async (_id:string):Promise<void>=>{
 export default {
     getAllProducts,
     getSingleProductByID,
+    getProductByCategory,
     addProduct,
     updateProduct,
     deleteProduct

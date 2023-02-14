@@ -47,7 +47,7 @@
 export default class productModel {
     _id: string;
     productName: string;
-    productCategory: number;
+    productCategory: string;
     productPrice: number;
     productImage: string;
 }

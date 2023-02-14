@@ -7,7 +7,13 @@ const productsController = express.Router();
 productsController.get(
   "/all",
   async (request: Request, response: Response, next: NextFunction) => {
+    try{
     response.status(200).json(await productsLogic.getAllProducts());
+    }catch{
+      return response.status(400).json({
+        success: false,
+      });
+    }
   }
 );
 
@@ -25,6 +31,20 @@ productsController.get(
     }
   }
 );
+
+productsController.get(
+  "/byCategory/:productCategory",
+  async (request: Request, response: Response, next: NextFunction) => {
+    try {
+      const productCategory = request.params.productCategory;
+      const products = await productsLogic.getProductByCategory(productCategory);
+      console.log(products);
+      return response.status(200).json(products);
+  }
+  catch (err: any) {
+      next(err);
+  }
+});
 
   productsController.post("/",async (request: Request, response: Response, next: NextFunction) => {
     try{ 

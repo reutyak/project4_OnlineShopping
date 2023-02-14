@@ -14,3 +14,7 @@
 // },{versionKey:false});
 
 // export const categoryModel = model<ICategoryModel>("categoryModel",categorySchema,"categories");
+export default class categoryModel {
+    _id: string;
+    categoryName: string;
+}

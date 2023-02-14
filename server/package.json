@@ -21,7 +21,8 @@
     "joi": "^17.7.0",
     "mongodb": "^5.0.0",
     "mongoose": "^6.9.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "object-hash": "^3.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
