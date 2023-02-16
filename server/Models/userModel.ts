@@ -10,6 +10,7 @@ export interface IUserModel extends Document {
     password: string;
     city: string;
     street: string;
+    role: string;
 }
 
 // 2. Schema: 
@@ -61,7 +62,12 @@ export const UserSchema = new Schema<IUserModel>({
         required: [true, "Missing street"],
         minlength: [3, "street to short"],
         maxlength: [25, "street to long"]
-    }},{
+    },
+    role:{
+        type:String,
+        default:"0"
+    }
+},{
     versionKey: false,
     toJSON: { virtuals: true },
     id: false

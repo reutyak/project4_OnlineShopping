@@ -1,3 +1,4 @@
+import { IUserModel, UserModel } from './Models/userModel';
 import  mongoose from 'mongoose';
 //it's just example init you have to change as needed
 // Main file in the SERVER 
@@ -13,16 +14,36 @@ import dal from './Utils/dal';
 import userController from './Routes/userController';
 import shCartController from './Routes/shCartController';
 import itemsController from './Routes/itemController';
+import ordersController from './Routes/orderController';
 dotenv.config(); 
 const server = express();
 const currentPort = process.env.PORT;
+
+const myAdmin = {
+    "firstName":process.env.ADMIN_NAME,
+    "lastName":process.env.ADMIN_LAST_NAME,
+    "email":process.env.ADMIN_EMAIL,
+    "ID":process.env.ADMIN_ID,
+    "password":process.env.ADMIN_PASSWORD,
+    "city":process.env.ADMIN_CITY,
+    "street":process.env.ADMIN_STREET,
+    "role":process.env.ADMIN_ROLE
+}
+const init=async ()=>{
+    const user =await UserModel.find({email: process.env.ADMIN_EMAIL}).exec();
+    if(!user){
+        new UserModel(myAdmin).save();
+    }
+};
+init()
 server.use(express.json());
 server.use(cors());
 server.use("/product", productsController);
 server.use("/category", categoryController);
 server.use("/user", userController);
-server.use("/cart", shCartController)
-server.use("/item", itemsController)
+server.use("/cart", shCartController);
+server.use("/item", itemsController);
+server.use("/order", ordersController);
 server.use("*", ErrorHandler);
 // async function connection(){
 //     // const client = new MongoClient(config.connectionString);

@@ -9,9 +9,9 @@ export interface IShoppingCartModel extends Document {
 
 // 2. Schema: 
 export const ShoppingCartSchema = new Schema<IShoppingCartModel>({
-    id: {
-        type: mongoose.Types.ObjectId,
-      },
+    // id: {
+    //     type: mongoose.Types.ObjectId,
+    //   },
     userName: {
         type: String,
         required: [true, "Missing name"],

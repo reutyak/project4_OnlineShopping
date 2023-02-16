@@ -1,3 +1,4 @@
+import { userAuth, adminAuth } from 'Utils/jwt';
 // // All the routes that connect the the DB and client.
 import express, { NextFunction, Request, Response } from "express";
 import productsLogic from "../Logic/productsLogic";
@@ -47,6 +48,7 @@ productsController.get(
 });
 
   productsController.post("/",async (request: Request, response: Response, next: NextFunction) => {
+    if(adminAuth(request,response)){
     try{ 
     const newProduct = request.body;
      response.status(201).json(await productsLogic.addProduct(newProduct));
@@ -55,11 +57,12 @@ productsController.get(
         success: false,
       });
     }
-  })
+  }else{response.status(401).json("You are no authorized!!!");}})
 
   // delete information from DB
   productsController.delete("/delete/:id", async (request: Request, response: Response, next: NextFunction) => {
   const idProd = request.params.id;
+  if(adminAuth(request, response)){
   try{
   response.status(204).json( await productsLogic.deleteProduct(idProd))
   }catch(err){
@@ -67,12 +70,13 @@ productsController.get(
       success: false,
     });
   }
-})
+}else{response.status(401).json("You are no authorized!!!");}})
 
   //update value
   productsController.put("/update/:id",async (request: Request, response: Response, next: NextFunction) => {
     const idProd = request.params.id;
     const updateProduct =request.body;
+    if(adminAuth(request,response)){
     try{
 response.status(201).json(await productsLogic.updateProduct(idProd,updateProduct));
     }catch(err){
@@ -80,7 +84,7 @@ response.status(201).json(await productsLogic.updateProduct(idProd,updateProduct
         success: false,
       });
     }
-  })
+  }else{response.status(401).json("You are no authorized!!!");}})
 
 
 export default productsController;

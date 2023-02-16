@@ -13,9 +13,9 @@ export interface IItemModel extends Document {
 
 // 2. Schema: 
 export const itemSchema = new Schema<IItemModel>({
-    _id: {
-        type: mongoose.Types.ObjectId,
-      },
+    // _id: {
+    //     type: mongoose.Types.ObjectId,
+    //   },
     productId: {
         type: String,
         required: [true, "Missing productId"],

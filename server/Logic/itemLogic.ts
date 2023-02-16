@@ -37,7 +37,7 @@ const addItem = async (item:IItemModel):Promise<IItemModel>=>{
 const updateItem = async(_id:any,item:IItemModel):Promise<IItemModel>=>{
     // const errors = product.validateSync();
     // if (errors) throw new ValidationError(errors.message);
-    const updateItem = await itemModel.findByIdAndUpdate(_id,item,{returnOriginal:true}).exec();
+    const updateItem = await itemModel.findByIdAndUpdate(_id,item,{returnOriginal:false}).exec();
     // if (!updateProduct) throw new IdNotFoundError(product._id)
     return updateItem
 }
