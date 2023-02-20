@@ -17,6 +17,7 @@ userController.post(
   async (request: Request, response: Response, next: NextFunction) => {
     const detailsUser = request.body;
     const users = await usersLogic.getAllUsers();
+    console.log(users);
     let checkMe = false;
     // console.log(admin);
     users.map(async (item) => {
@@ -24,23 +25,24 @@ userController.post(
         detailsUser.email === item.email &&
         hash(detailsUser.password) === item.password
       ) {
-        console.log(detailsUser.user_name);
-        detailsUser.id = item.id;
+        detailsUser._id = item._id;
+        detailsUser.role = item.role;
+        console.log(detailsUser._id);
         checkMe = true;
       }
     });
     if (checkMe) {
       const token = await getJWT(
         detailsUser.email,
-        detailsUser.ID,
+        detailsUser._id,
         detailsUser.role
       );
       console.log(token);
       //add token to the system...
-      await response.set("Authorization", `Bearer ${token}`);
+      response.set("Authorization", `Bearer ${token}`);
       console.log("user email:", getUserEmailFromJWT(token));
       console.log("exp:", getExpFromJWT(token));
-      response.status(202).json(detailsUser.email);
+      response.status(202).json(detailsUser);
     } else {
       response.status(403).json(false);
     }
@@ -50,12 +52,12 @@ userController.post(
 userController.get(
   "/all",
   async (request: Request, response: Response, next: NextFunction) => {
-    if (adminAuth(request, response)) {
+    // if (adminAuth(request, response)) {
       response.status(200).json(await usersLogic.getAllUsers());
-    } else {
-      response.status(401).json("You are no authorized!!!");
+    // } else {
+    //   response.status(401).json("You are no authorized!!!");
     }
-  }
+  // }
 );
 
 userController.get(

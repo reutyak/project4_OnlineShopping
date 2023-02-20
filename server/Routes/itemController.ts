@@ -1,4 +1,4 @@
-import { adminAuth, userAuth } from 'Utils/jwt';
+import { adminAuth, userAuth } from '../Utils/jwt';
 // // All the routes that connect the the DB and client.
 import express, { NextFunction, Request, Response } from "express";
 import productsLogic from "../Logic/productsLogic";

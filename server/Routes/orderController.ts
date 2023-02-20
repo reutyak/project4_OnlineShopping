@@ -1,4 +1,4 @@
-import { adminAuth, userAuth } from 'Utils/jwt';
+import { adminAuth, userAuth } from '../Utils/jwt';
 // // All the routes that connect the the DB and client.
 import orderLogic from "../Logic/orderLogic";
 import { IOrderModel } from 'Models/orderModel';

@@ -2,7 +2,7 @@ import { IShoppingCartModel } from 'Models/ShoppingCartModel';
 // // All the routes that connect the the DB and client.
 import shoppingCartLogic from "../Logic/shoppingCartLogic";
 import express, { NextFunction, Request, Response } from "express";
-import { adminAuth, userAuth } from 'Utils/jwt';
+import { adminAuth, userAuth } from '../Utils/jwt';
 
 const shCartController = express.Router();
 
