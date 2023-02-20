@@ -77,7 +77,7 @@ function Login(): JSX.Element {
             {...register("password")}
           ></input>
           <input
-            className="btn btn-primary"
+            className="btn btn-success"
             required
             type="submit"
             value="Entrance"

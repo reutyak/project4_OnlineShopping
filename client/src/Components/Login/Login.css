@@ -3,7 +3,7 @@
 }
 .login{
     width:45%;
-    border: 2px solid rgb(164, 193, 222);
+    border: 2px solid rgb(202, 146, 4);
     border-radius: 15px;
     margin-left: 27.5%;
     padding:20px;
@@ -18,4 +18,8 @@
 }
 .Login p{
     font-size: 13px;
+}
+
+.Login span {
+color:darkgoldenrod
 }

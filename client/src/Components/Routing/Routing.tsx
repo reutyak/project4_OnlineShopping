@@ -9,16 +9,17 @@ function Routing(): JSX.Element {
     return (
         <div className="Routing">
 			<Routes>
-                <Route path = "/" element={<Login/>}/>
+                <Route path = "/" element={<User/>}/>
                 <Route path = "/admin" element={<Admin/>}/>
                 <Route path = "/register" element= {<Register/>}/>
+                <Route path = "/login" element= {<Login/>}/>
                 {/*<Route path = "/modal" element= {<Modal/>}/>
                 <Route path = "/admin/all" element={<VacationList/>}/>
                 <Route path = "/admin/addVacation" element={<AddVacation/>}/>
                 <Route path = "/admin/addVacation/:id" element={<AddVacation/>}/>
                 <Route path = "/admin/report" element={<Report/>}/> */}
                 <Route path = "/user" element={<User/>}/>
-                <Route path = "*" element={<Login/>}/>
+                <Route path = "*" element={<User/>}/>
             </Routes>
         </div>
     );
