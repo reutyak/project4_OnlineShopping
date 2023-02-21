@@ -1,0 +1,8 @@
+.ModalAuth {
+	
+}
+.Modal>.Modal.Footer>.Button{
+    text-align: center;
+    margin-right:40% ;
+    align-self: center;
+}

@@ -22,7 +22,7 @@ export function logOut(): ProductsAction {
 }
 
 //function to handle the state changes (dispatch)
-export function getAllProductsST(myProducts: productModel[]): ProductsAction {
+export function getAllProductsST(myProducts: any[]): ProductsAction {
   return { type: productsActionType.getAllProductsST, payload: myProducts };
 }
 
@@ -32,12 +32,12 @@ export function deleteProductsST(_id: string): ProductsAction {
 }
 
 //add vacation
-export function addProductsST(myProduct: productModel): ProductsAction {
+export function addProductsST(myProduct: any): ProductsAction {
   return { type: productsActionType.addProductsST, payload: myProduct };
 }
 
 //update vacation
-export function updateProductsST(myProduct: productModel): ProductsAction {
+export function updateProductsST(myProduct: any): ProductsAction {
   return { type: productsActionType.updateProductsST, payload: myProduct };
 }
 
