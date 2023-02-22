@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const getJWT = (userEmail: string, userId: string, role: string) => {
   let data = {
-    exp: Math.floor(Date.now() / 1000) + 60 * 1,
+    exp: Math.floor(Date.now() / 1000) + 60 * 15,
     timeStamp: Date(),
     user: userEmail,
     id: userId,

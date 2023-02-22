@@ -5,16 +5,17 @@ import User from "../User/User";
 import Admin from "../Admin/Admin";
 import Register from "../Register/Register";
 import AddProduct from "../AddProduct/AddProduct";
+import FirstPage from "../FirstPage/FirstPage";
 
 function Routing(): JSX.Element {
     return (
         <div className="Routing">
 			<Routes>
-                <Route path = "/" element={<User/>}/>
+                <Route path = "/" element={<FirstPage/>}/>
                 <Route path = "/admin" element={<Admin/>}/>
                 <Route path = "/admin/addProduct" element={<AddProduct/>}/>
                 <Route path = "/register" element= {<Register/>}/>
-                <Route path = "/login" element= {<Login/>}/>
+                {/* <Route path = "/login" element= {<Login/>}/> */}
                 {/*<Route path = "/modal" element= {<Modal/>}/>
                 <Route path = "/admin/all" element={<VacationList/>}/>
                 <Route path = "/admin/addVacation" element={<AddVacation/>}/>

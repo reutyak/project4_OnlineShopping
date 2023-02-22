@@ -19,10 +19,10 @@ function ProductList(): JSX.Element {
     store.getState().productState.productsST
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(10);
+  const [cardsPerPage] = useState(15);
   const [categories, setCategories]= useState<categoryModel[]>(store.getState().categoryState.categoriesST);
 
-  const pageCount = Math.ceil(products.length / 10);
+  const pageCount = Math.ceil(products.length / cardsPerPage);
 
   useEffect(() => {
       const myProducts = productServices.getAllProducts();
@@ -61,9 +61,9 @@ function ProductList(): JSX.Element {
 
   return <div className="ProductList"><div>{modalUp()}</div>
   <div className="displayCard">
-      <div className="card">
+      <div className="card1">
       {currentCards.map((item)=>
-          <div className="card-container" key={item._id} style={{ height: 360, width:250 }}>
+          <div className="card"><div className="card-container1" key={item._id} style={{ height: 360, width:250 }}>
               <p className="dest">{categories.filter(category=> category._id ===item.productCategory)[0].categoryName}</p>
               <p>{item.productName}</p>
               <img className="image" src={item.productImage} alt = "img" style={{height:150}}/>
@@ -92,7 +92,7 @@ function ProductList(): JSX.Element {
                       <EditIcon/>
                   </IconButton>
               </div>
-          </div>
+          </div></div>
           )}
       </div>
   </div>

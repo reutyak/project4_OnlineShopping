@@ -1,0 +1,75 @@
+.Advertisement {
+	/* margin-left: 33%; */
+    width:100%;
+    height: 750px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 0;
+    padding:40px;
+    font-size: 50px;
+
+}
+.Login label,.Login input{
+    font-size: 150px;
+    margin: 10px;
+}
+.head{
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.Login > button {
+    color:rgb(32, 120, 253);
+    display: inline;
+    display: -moz-inline-box;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    /* width: 100%; */
+    text-align: center;
+
+}
+
+.Login p{
+    font-size: 13px;
+}
+
+.Login span {
+color:rgb(0, 0, 0)
+}
+
+.img{
+    width: 150px;
+}
+
+.sisma{
+    color:rgb(32, 120, 253);
+    text-align: center;
+    text-shadow: 1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000000,
+    -2px -1px 0 #000;
+    /* border-color: black; */
+    text-overflow: clip;
+    font-weight: 800;
+    font-display:inherit;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

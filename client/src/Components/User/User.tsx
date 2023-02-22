@@ -10,10 +10,8 @@ const[products, setProducts]=useState<productModel[]>(store.getState().productSt
 const [categories, setCategories]= useState<categoryModel[]>(store.getState().categoryState.categoriesST);
 
     useEffect(() => {
-        if (products.length===0) {
           const myProducts = productServices.getAllProducts();
           setProducts(myProducts);
-        }else{}
       }, []);
 
       useEffect(() => {

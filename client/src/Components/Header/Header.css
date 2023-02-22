@@ -1,10 +1,16 @@
 .Header {
 	text-align:center;
     width: 100%;
+    border-top: 2px solid rgb(0, 0, 0);
+    border-left: 2px solid rgb(0, 0, 0);
+    border-right: 2px solid rgb(0, 0, 0);
+
 }
 
 .Header > div, .Header > button {
-    color:rgb(9, 90, 31);
+    color:rgb(32, 120, 253);
+    font-weight: 900;
+    font-size:large;
     display: inline;
     display: -moz-inline-box;
     *display: inline; /* For IE7 */
@@ -14,9 +20,13 @@
     margin-bottom: 0;
 }
 
+.Header img{
+    width: 70px;
+}
+
 .add {
     width: 45%;
-    border-radius: 15px;
+    border-radius: 0px;
     margin-left: 27.5%;
     padding: 20px;
     background-color: white;
@@ -29,9 +39,4 @@
     display:inline;
     width: 30%;
     margin: 0.5%;
-}
-.Header img{
-    margin: 1.5%;
-    /* height: ; */
-
 }

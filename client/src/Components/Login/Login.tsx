@@ -10,7 +10,7 @@ import { LoginModel } from "../../Model/loginModel";
 import { UserModel } from "../../Model/userModel";
 import * as dotenv from "dotenv";
 import userServices from "../../services/userServices";
-import { Alert } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 const port = process.env.SERVER_PORT;
 
 function Login(): JSX.Element {
@@ -57,38 +57,42 @@ function Login(): JSX.Element {
     <div className="Login">
       <form className="login" onSubmit={handleSubmit(send)}>
         <div className="form container">
-          <h4 className="head">Login</h4>
+          <h4 className="head">Registered?</h4>
           <div className="Alert">{alertOn()}</div>
-          <label htmlFor="sel">
+          {/* <label htmlFor="sel">
             Enter your Email - it's will be your user name:
-          </label>
+          </label> */}
           <input
             className="form-control"
             id="sel"
             type="text"
+            placeholder="Email"
             required
             {...register("email")}
           ></input>
-          <label>Enter Password:</label>
+          {/* <label>Enter Password:</label> */}
           <input
             className="form-control"
             type="password"
+            placeholder="password"
             required
             {...register("password")}
           ></input>
           <input
-            className="btn btn-success"
+            className="btn btn-primary"
             required
             type="submit"
-            value="Entrance"
+            value="Login"
           />
-          <br />
-          <p>
-            Don't have an account yet?&nbsp;&nbsp;
-            <NavLink to="/register">
-              <span> Register&nbsp;</span>
-            </NavLink>
-          </p>
+          {/* <br /> */}
+          {/* <p> */}
+            {/* Don't have an account yet?&nbsp;&nbsp; */}
+            <Button variant="outlined" color="primary"><NavLink  className="nav-link" to="/register">Sign up</NavLink></Button>
+
+            {/* <NavLink to="/register">
+              <span> Sign up&nbsp;</span>
+            </NavLink> */}
+          {/* </p> */}
         </div>
       </form>
     </div>

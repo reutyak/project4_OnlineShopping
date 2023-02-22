@@ -1,25 +1,39 @@
 .Login {
-	text-align: center;
+	text-align: left;
+    
 }
 .login{
-    width:45%;
-    border: 2px solid rgb(202, 146, 4);
-    border-radius: 15px;
-    margin-left: 27.5%;
-    padding:20px;
+    width:450PX;
+    height: 750px;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 0;
+    margin-left: 0%;
+    padding:80px;
 }
 .Login label,.Login input{
     font-size: 15px;
-    margin-bottom: 10px;
+    /* margin: 10px; */
 }
 .head{
     font-weight: 900;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
+
+.Login > button {
+    color:gold;
+    display: inline;
+    display: -moz-inline-box;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    /* width: 100%; */
+    text-align: center;
+
+}
+
 .Login p{
     font-size: 13px;
 }
 
 .Login span {
-color:darkgoldenrod
+color:rgb(0, 0, 0)
 }
