@@ -26,6 +26,8 @@ export function getAllProductsST(myProducts: any[]): ProductsAction {
   return { type: productsActionType.getAllProductsST, payload: myProducts };
 }
 
+
+
 //delete product
 export function deleteProductsST(_id: string): ProductsAction {
   return { type: productsActionType.deleteProductsST, payload: _id };

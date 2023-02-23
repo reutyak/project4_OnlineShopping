@@ -17,12 +17,16 @@ userController.post(
   async (request: Request, response: Response, next: NextFunction) => {
     const detailsUser = request.body;
     const users = await usersLogic.getAllUsers();
+    console.log(detailsUser.password);
+    console.log(hash(detailsUser.password));
+
     console.log(users);
     let checkMe = false;
     // console.log(admin);
     users.map(async (item) => {
       if (
-        detailsUser.email === item.email &&
+        detailsUser.email === item.email 
+        &&
         hash(detailsUser.password) === item.password
       ) {
         detailsUser._id = item._id;
@@ -106,7 +110,7 @@ userController.post(
       });
       console.log(newUser.password);
       console.log(newUser);
-      if ((exist = false)) {
+      if ((exist === false)) {
         response.status(201).json(await usersLogic.addUser(newUser));
       }
     } catch (err) {

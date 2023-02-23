@@ -1,3 +1,11 @@
 .Register {
-	
+	width: 33%;
+    /* width:450PX; */
+    height: 100%;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 0;
+    margin-left: 33%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+
 }

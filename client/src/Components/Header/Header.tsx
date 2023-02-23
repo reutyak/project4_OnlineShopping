@@ -4,8 +4,8 @@ import Button from "@mui/material/Button";
 import logo from "../../assets/Logo2.png";
 function Header(): JSX.Element {
     const user=()=>{
-        let myName = "guest";
-        return myName
+        let localName = localStorage.getItem("userName")
+        return localName
     }
     return (
         <div className="Header">

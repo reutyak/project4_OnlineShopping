@@ -28,11 +28,7 @@ function Login(): JSX.Element {
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem("myToken", "");
-    localStorage.setItem("email", "");
-    localStorage.setItem("role", "");
-  }, []);
+  
 
   const send = async (userLogin: LoginModel) => {
     try {
