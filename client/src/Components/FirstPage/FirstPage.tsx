@@ -9,6 +9,7 @@ import categoryServices from "../../services/categoryServices";
 import { categoryModel } from "../../Model/categoryModel";
 import { store } from "../../redux/store";
 import userServices from "../../services/userServices";
+import Header from "../Header/Header";
 
 function FirstPage(): JSX.Element {
     const[products, setProducts]=useState<productModel[]>(store.getState().productState.productsST)
@@ -40,11 +41,12 @@ useEffect(() => {
       
       
     return (
-        <div className="FirstPage">
-			<div className="Login"><Login/></div>
-            <div className="Advert"><Advertisement/></div>
-            <div className="Information"><Information/></div>
-        </div>
+      <div className="FirstPage">
+        <header><Header /></header>
+        <main><div className="Login"><Login /></div>
+        <div className="Advert"><Advertisement /></div>
+        <div className="Information"><Information /></div>
+        </main></div>
     );
 }
 

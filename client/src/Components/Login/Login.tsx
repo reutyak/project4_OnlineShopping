@@ -17,7 +17,6 @@ function Login(): JSX.Element {
   const { register, handleSubmit } = useForm<LoginModel>();
   const navigate = useNavigate();
   const [alert, setAlert] = useState<Boolean>(false);
-
   const alertOn = () => {
     if (alert === true) {
       return (
@@ -33,6 +32,8 @@ function Login(): JSX.Element {
   const send = async (userLogin: LoginModel) => {
     try {
       const myLogin = userServices.login(userLogin);
+      const myUser = store.getState().UserState.usersST.filter((user)=>user.email===userLogin.email)[0].firstName;
+      localStorage.setItem("userName",myUser);
       let myRole = localStorage.getItem("role");
       console.log(myRole);
       if (await myLogin == "1") {

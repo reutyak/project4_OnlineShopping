@@ -5,7 +5,7 @@ import "./Main.css";
 function Main(): JSX.Element {
     return (
         <div className="Main">
-			<header><Header/></header>
+			{/* <header><Header/></header> */}
             <main><Routing/></main>
         </div>
     );

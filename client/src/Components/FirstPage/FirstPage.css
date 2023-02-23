@@ -1,4 +1,4 @@
-.FirstPage {
+.FirstPage main {
 	display:flex;
     flex-direction: row;
     margin:0;
@@ -7,6 +7,10 @@
     align-items: stretch
     
 
+}
+.FirstPage header{
+    display:-moz-grid-line;
+    width: 100%;
 }
  .Advert {
     background-image:url("../../assets/supermarket4.png");
