@@ -8,7 +8,7 @@ function Admin(): JSX.Element {
         <div className="Admin">
             <header><Header /></header>
 			<AdminMenu/>
-            <ProductList/>
+            {/* <ProductList/> */}
         </div>
     );
 }

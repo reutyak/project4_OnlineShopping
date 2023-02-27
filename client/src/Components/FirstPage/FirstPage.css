@@ -1,17 +1,24 @@
 .FirstPage main {
-	display:flex;
-    flex-direction: row;
-    margin:0;
+	/* display:flex; */
+    /* flex-direction: row; */
+    margin-top:2%;
     width: 100%;
+    height: 700px;
     text-align: center;
-    align-items: stretch
+    /* align-items: stretch */
     
 
 }
 .FirstPage header{
-    display:-moz-grid-line;
+    /* display:-moz-grid-line; */
     width: 100%;
 }
- .Advert {
-    background-image:url("../../assets/supermarket4.png");
+
+.Box {
+    height: max-content;
 }
+ /* .Advert {
+    background-image:url("../../assets/supermarket4.png");
+} */
+
+

@@ -13,7 +13,7 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import ProductList from "../ProductList/ProductList";
 interface TabPanelProps {
   children?: React.ReactNode;
   dir?: string;
@@ -47,11 +47,15 @@ function a11yProps(index: number) {
     'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
+
+
 function User(): JSX.Element {
 const[products, setProducts]=useState<productModel[]>(store.getState().productState.productsST)
 const [categories, setCategories]= useState<categoryModel[]>(store.getState().categoryState.categoriesST);
 const theme = useTheme();
-  const [value, setValue] = useState(0);
+const [value, setValue] = useState(0);
+const [num, setNum] = useState(0);
+const [num2, setNum2] = useState(-1);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -60,6 +64,7 @@ const theme = useTheme();
   const handleChangeIndex = (index: number) => {
     setValue(index);
   };
+
     useEffect(() => {
           const myProducts = productServices.getAllProducts();
           setProducts(myProducts);
@@ -72,42 +77,23 @@ const theme = useTheme();
         }else{}
       }, []);
       
+      
       return (
         <div className="User">
           <header><Header/></header>
-          <Box sx={{ bgcolor: 'background.paper', width: 500 }}>
-      <AppBar position="static">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
+          <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} indicatorColor="primary"
           textColor="inherit"
           variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          aria-label="full width tabs example">
+            {categories.map((category)=>{return <Tab label={category.categoryName} {...a11yProps(num)} />;setNum(num+1)})}
         </Tabs>
-      </AppBar>
-      {/* <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      > */}
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          Item One
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
-        </TabPanel>
-      {/* </SwipeableViews> */}
-    </Box>
-
-			
+      </Box>
+      {categories.map((category)=><TabPanel value={value} index={categories.map(function(o) { return o._id; }).indexOf(category._id)}>
+        <ProductList _id={category._id} categoryName={category.categoryName}/>
+      </TabPanel>)}
+    </Box>			
         </div>
     );
 }

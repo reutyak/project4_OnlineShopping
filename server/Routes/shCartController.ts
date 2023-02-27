@@ -46,16 +46,18 @@ shCartController.get(
   });
   
   shCartController.post("/",async (request: Request, response: Response, next: NextFunction) => {
-    if(userAuth(request, response)){
+    // if(userAuth(request, response)){
     try{ 
     const newCart:IShoppingCartModel = request.body;
-     response.status(201).json(await shoppingCartLogic.addShCart(newCart));
+    const cart = shoppingCartLogic.addShCart(newCart);
+     response.status(201).json(await cart);
     }catch(err){
       return response.status(400).json({
         success: false,
       });
     }
-  }else{response.status(401).json("You are no authorized!!!");}})
+  // }else{response.status(401).json("You are no authorized!!!");}
+})
 
   // delete information from DB
   shCartController.delete("/delete/:id", async (request: Request, response: Response, next: NextFunction) => {

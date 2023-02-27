@@ -20,6 +20,8 @@ const getAllUsers = async () => {
       const currentToken = await response.headers["authorization"];
         localStorage.setItem("myToken", currentToken);
         store.dispatch(getAllUsersST(users));
+        localStorage.setItem("numUsers",users.length.toString())
+
     });
     return users
 };

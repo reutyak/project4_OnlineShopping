@@ -44,8 +44,8 @@ var corsOptions = {
     optionsSuccessStatus: 204,
     exposedHeaders: "Authorization", //expose the Authorization header
   };
+  server.use(cors(corsOptions));
 server.use(express.json())
-server.use(cors(corsOptions));
 server.use("/product", productsController);
 server.use("/category", categoryController);
 server.use("/user", userController);

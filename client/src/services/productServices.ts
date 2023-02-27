@@ -10,6 +10,8 @@ const getAllProducts = () =>{
     .then(async (response) => {
         products =  response.data;
         store.dispatch(getAllProductsST(products))
+        localStorage.setItem("numProducts",products.length.toString())
+
         // const currentToken = await response.headers["authorization"];
         // localStorage.setItem("myToken", currentToken);
     });

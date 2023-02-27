@@ -21,6 +21,8 @@ function Register(): JSX.Element {
     const [alert, setAlert] = useState<Boolean>(false);
     const [alert2, setAlert2] = useState<Boolean>(false);
     const [password,setPassword]=useState("");
+    const [Email,setEmail]=useState("");
+
     const [conPassword,setConPassword]=useState("");
     const [ID1, setID]=useState("");
     const [disButton, setDisButton]=useState(true)
@@ -50,13 +52,20 @@ function Register(): JSX.Element {
     };
 
     const icon=()=>{
-      if(password===conPassword){
-        return <><CheckBoxTwoToneIcon /><br></br><input className="btn btn-primary" type="button"
-          onClick={change} value="next" /></>
+      if(password===conPassword && password!==""){
+        return <><CheckBoxTwoToneIcon /><br></br>
+        </>
       }else{
-        return <><CancelPresentationTwoToneIcon/><br></br><input className="btn btn-primary" type="button" disabled
-        onClick={change} value="next" /></>
+        return <><CancelPresentationTwoToneIcon/><br></br></>
       }
+    };
+
+    const next = ()=>{
+      if (ID1!=="" && password !=="" && Email!==""){
+        return <input className="btn btn-primary" type="button"
+        onClick={change} value="next" />
+      }else{return <input className="btn btn-primary" type="button" disabled
+      onClick={change} value="next" />}
     }
 
     const check = ()=>{
@@ -104,7 +113,12 @@ function Register(): JSX.Element {
                   setID(event.target.value)
                 }required></input>
                 {/* <label>Email:</label> */}
-                <input className="form-control" type="text" placeholder="Email" required {...register("email")}></input>
+                <input className="form-control" type="text" {...register("email")} placeholder="Email"id="ID1"
+                name="Email"
+                value={Email}
+                onChange={(event) => 
+                  setEmail(event.target.value)
+                } required ></input>
                 {/* <label>Password:</label> */}
                 <input className="form-control" type="password" {...register("password")}
                 id="password"
@@ -124,6 +138,7 @@ function Register(): JSX.Element {
                 onChange={(event) =>
                   setConPassword(event.target.value)
                 } ></input>Password Confirm:{icon()} </div>
+                <div>{next()}</div>
   </TabPanel>
   <TabPanel value="2">
         <label>City:</label>
