@@ -129,14 +129,8 @@ function ProductList(props: categoryModel): JSX.Element {
                 </CardContent>
 
                 <CardActions>
-                  <AddRemoveItem productId={item._id} amount={0} totalPrice={0} CartID={""}/>
-                  {/* <Button onClick={()=>setModalShow2(true)} size="small" color="secondary">
-                    <RemoveCircleIcon />
-                  </Button>
-                  {}
-                  <Button onClick={()=>setModalShow3(true)} size="small">
-                    <AddCircleIcon />
-                  </Button> */}
+                  <AddRemoveItem productId={item._id} amount={0}  CartID={JSON.parse(localStorage.myCart)._id} price={item.productPrice} totalPrice={0} />
+                  
                 </CardActions>
                 {/* </React.Fragment> */}
               </Card>

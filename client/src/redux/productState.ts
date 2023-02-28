@@ -69,7 +69,7 @@ export function productsReducer(
 
     case productsActionType.updateProductsST:
       newState.productsST = newState.productsST
-        .filter((item: { _id: string }) => item._id !== action.payload)
+        .filter((item: { _id: string }) => item._id !== action.payload._id)
         .push(action.payload);
       break;
 

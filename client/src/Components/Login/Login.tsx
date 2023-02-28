@@ -12,6 +12,7 @@ import * as dotenv from "dotenv";
 import userServices from "../../services/userServices";
 import { Alert, Button } from "@mui/material";
 import cartServices from "../../services/cartServices";
+import { CartModel } from "../../Model/cartModel";
 const port = process.env.SERVER_PORT;
 
 function Login(): JSX.Element {
@@ -34,9 +35,11 @@ function Login(): JSX.Element {
     try {
       const myLogin = userServices.login(userLogin);
       const myUser = store.getState().UserState.usersST.filter((user)=>user.email===userLogin.email)[0].firstName;
-      const myCart = {
-        userName: myUser,
-      date: new Date(Date.now()).toISOString()
+      const userName = store.getState().UserState.usersST.filter((user)=>user.email===userLogin.email)[0].email;
+
+      const myCart:CartModel = {
+        userName: userName,
+        date: new Date(Date.now()).toISOString()
       };
       sessionStorage.setItem("userName",myUser);
       let myRole = sessionStorage.getItem("role");
@@ -46,9 +49,7 @@ function Login(): JSX.Element {
       }
       if (await myLogin == "0") {
         navigate("/user");
-        const myNewCart = cartServices.addCart(myCart);
-console.log(myNewCart);
-        sessionStorage.setItem("cart", myNewCart._id);
+        cartServices.addCart(myCart);
       } else {
         setAlert(true);
       }
