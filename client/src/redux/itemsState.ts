@@ -29,8 +29,8 @@ export function getAllItemsST(myProducts: any[]): ItemsAction {
 
 
 //delete product
-export function deleteItemsST(_id: string): ItemsAction {
-  return { type: itemsActionType.deleteItemsST, payload: _id };
+export function deleteItemsST(productId: string): ItemsAction {
+  return { type: itemsActionType.deleteItemsST, payload:productId };
 }
 
 //add vacation
@@ -68,16 +68,15 @@ export function itemsReducer(
       break;
 
     case itemsActionType.updateItemsST:
-      newState.ItemsST = newState.productsST
-        .filter((item: { _id: string }) => item._id !== action.payload._id)
-        .push(action.payload);
+      newState.ItemsST = newState.ItemsST.filter((item: { productId: any; } ) => item.productId !== action.payload.productId).push(action.payload);
+      console.log(newState);
       break;
 
     case itemsActionType.deleteItemsST:
       console.log(newState);
       console.log(action.payload);
-      newState.ItemsST = newState.productsST.filter(
-        (item: { _id: string }) => item._id !== action.payload
+      newState.ItemsST = newState.ItemsST.filter(
+        (item: { productId: any; }) => item.productId !== action.payload
       );
       console.log(newState);
 

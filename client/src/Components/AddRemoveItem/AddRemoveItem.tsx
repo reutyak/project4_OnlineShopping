@@ -9,7 +9,11 @@ import { useState } from "react";
 import { ItemModel } from "../../Model/itemModel";
 import { store } from "../../redux/store";
 import { ItemModel1 } from "../../Model/itemModel1";
-import { addItemsST, updateItemsST } from "../../redux/itemsState";
+import {
+  addItemsST,
+  deleteItemsST,
+  updateItemsST,
+} from "../../redux/itemsState";
 
 function AddRemoveItem(props: ItemModel1): JSX.Element {
   const myItem = { ...props };
@@ -42,28 +46,33 @@ function AddRemoveItem(props: ItemModel1): JSX.Element {
     }
   };
 
-  const organizationData=async (myItem:ItemModel1)=>{
-    console.log(await store.getState().ItemsState.ItemsST);
-    setAmount(amount + 1);
-          myItem.amount = amount;
-          setModalShow3(true);
-          console.log(myItem);
-    const itemSave:ItemModel = {
+  const organizationData = async (amo:number) => {
+    console.log(store.getState().ItemsState.ItemsST);
+    console.log(myItem);
+    myItem.amount = amount;
+    console.log(myItem);
+    const itemSave: ItemModel = {
       productId: myItem.productId,
-    amount: await myItem.amount,
-    totalPrice: myItem.totalPrice,
-    CartID: JSON.parse(localStorage.myCart)._id
-    }
-    if(store.getState().ItemsState.ItemsST.filter((pro)=>pro.productId===itemSave.productId).length===0){
-await store.dispatch(addItemsST(itemSave));
-console.log(await store.getState().ItemsState.ItemsST);
-    }else{
-      store.dispatch(updateItemsST(itemSave));
+      amount: amo,
+      totalPrice: myItem.totalPrice,
+      CartID: JSON.parse(localStorage.myCart)._id,
+    };
+    console.log(itemSave);
 
+    if (
+      store
+        .getState()
+        .ItemsState.ItemsST.filter(
+          (pro) => pro.productId === itemSave.productId
+        ).length === 0
+    ) {
+      await store.dispatch(addItemsST(itemSave));
+      console.log(await store.getState().ItemsState.ItemsST);
+    } else {
+      store.dispatch(deleteItemsST(itemSave.productId));
+      store.dispatch(addItemsST(itemSave));
     }
-
   };
-
 
   return (
     <div className="AddRemoveItem">
@@ -71,9 +80,9 @@ console.log(await store.getState().ItemsState.ItemsST);
         onClick={async () => {
           if (amount > 0) {
             setAmount(amount - 1);
-            myItem.amount = amount;
+            // myItem.amount = amount;
             setModalShow2(true);
-            organizationData(await myItem);
+            organizationData(amount - 1);
           } else {
             console.log();
           }
@@ -87,11 +96,11 @@ console.log(await store.getState().ItemsState.ItemsST);
       {amount}
       <Button
         onClick={async () => {
-          // setAmount(amount + 1);
+          setAmount(amount + 1);
           // myItem.amount = amount;
-          // setModalShow3(true);
-          // console.log(myItem);
-          organizationData(await myItem);
+          setModalShow3(true);
+          console.log(myItem);
+          organizationData(amount + 1);
         }}
         size="small"
       >
