@@ -1,0 +1,19 @@
+.OneItem {
+	height: 150px;
+    display: inline-block;
+    width: 100%;
+
+}
+
+.text-muted{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    border: none;
+}
+
+.body{
+    width: 50px;
+}

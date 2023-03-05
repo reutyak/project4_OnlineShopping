@@ -1,0 +1,26 @@
+.ViewCart1 {
+	border: 1px;
+    border-color: black;
+    width: 100%;
+    font-size: small;
+
+}
+.ViewCart{
+width: auto;
+}
+.Paper{
+    width: 100%;
+}
+.item{
+    width: 100%;
+    height: 100%;
+    border:1px;
+    border-color: black;
+
+}
+
+.title {
+    margin: 10px;
+}
+
+

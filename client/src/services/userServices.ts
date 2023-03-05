@@ -54,6 +54,7 @@ const login = (userLogin:LoginModel):Promise<any> => {
           localStorage.setItem("myToken", currentToken || "");
           localStorage.setItem("email", response.data.email);
           localStorage.setItem("role", response.data.role);
+          sessionStorage.setItem("toPay", "0");
           console.log(response.data);
           return "0";
         }

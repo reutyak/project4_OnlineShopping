@@ -1,14 +1,10 @@
-/* html,body,#root{
-    margin:0;
-    padding: 0;
-    height: 100%;
-    text-align: center;
-  }
+
   
   .ProductList{
-    /* display: inline; */
-    /* padding: 30px; */
-    /* border:1px; */
+    display: inline;
+    padding: 30px;
+    border:1px;
+  }
   
     html,body,#root{
       margin:0;
@@ -17,10 +13,6 @@
       text-align: center;
     }
     
-    /* .vacationList{
-      padding: 30px;
-    
-    } */
     
     .Button{
       text-align: center;
@@ -28,8 +20,9 @@
       margin-bottom: 0px;
     }
     .displayCard {
+      width: 100%;
     text-align: center;
-    
+    display: flex;
     }
 
     .Card{
@@ -37,6 +30,7 @@
     }
     .card {
     /* max-width: 50%; */
+
     order:5;
     display: flex;
     flex-direction: row;
@@ -44,6 +38,17 @@
     justify-content: flex-start;
 
     border: none;
+    }
+    .Single{
+      /* margin: 5px; */
+
+      width: 100%;
+      order:5;
+      float:left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     }
     .card-container{
       

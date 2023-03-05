@@ -1,3 +1,16 @@
-.User {
-	
+.User body{
+	display:flex;
+    justify-content: left;
+    height: 100%;
+    width: 70%;
+}
+
+.User aside{
+    height: 100%;
+    width: 100%;
+
+}
+
+.cart{
+    width: 100%;
 }

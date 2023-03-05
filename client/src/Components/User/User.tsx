@@ -14,6 +14,8 @@ import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ProductList from "../ProductList/ProductList";
+import ViewCart from "../ViewCart/ViewCart"
+import ForPayment from "../ForPayment/ForPayment";
 interface TabPanelProps {
   children?: React.ReactNode;
   dir?: string;
@@ -81,6 +83,9 @@ const [num2, setNum2] = useState(-1);
       return (
         <div className="User">
           <header><Header/></header>
+          <body>
+          <aside className="cart"><ViewCart/></aside>	
+
           <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} indicatorColor="primary"
@@ -93,7 +98,8 @@ const [num2, setNum2] = useState(-1);
       {categories.map((category)=><TabPanel value={value} index={categories.map(function(o) { return o._id; }).indexOf(category._id)}>
         <ProductList _id={category._id} categoryName={category.categoryName}/>
       </TabPanel>)}
-    </Box>			
+    </Box>
+    </body>		
         </div>
     );
 }
