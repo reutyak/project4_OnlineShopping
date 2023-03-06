@@ -18,6 +18,12 @@ import { productModel } from "../../Model/productModel";
 import Amount from "../Amount/Amount";
 
 function AddRemoveItem(props: ItemModel1): JSX.Element {
+  const state = sessionStorage.getItem("state");
+  const disableButton = ()=>{
+    if (state==="1"){
+      return false
+    }else{return true}
+  };
   const myItem = { ...props };
   const [modalShow2, setModalShow2] = useState(false);
   const [modalShow3, setModalShow3] = useState(false);
@@ -28,10 +34,11 @@ function AddRemoveItem(props: ItemModel1): JSX.Element {
     }
   }, []);
 
-  // store.subscribe(() => {
-  //   setAmount(store.getState().ItemsState.ItemsST.filter(pro=>pro.productId===props.productId)[0].amount);
-  //   console.log("subscribe");
-  // });
+  store.subscribe(() => {
+    if (store.getState().ItemsState.ItemsST.some(pro=>pro.productId===props.productId)) {
+      setAmount(store.getState().ItemsState.ItemsST.filter(pro=>pro.productId===props.productId)[0].amount)
+    }    console.log("subscribe");
+  });
 
   
   myItem.totalPrice = amount * myItem.price;
@@ -85,19 +92,15 @@ function AddRemoveItem(props: ItemModel1): JSX.Element {
 
   return (
     <div className="AddRemoveItem">
-      <Button
+      <Button disabled={disableButton()}
         onClick={async () => {
           if (amount > 0) {
             setAmount(amount - 1);
             let pay = sessionStorage.getItem("toPay")||"0";
           var pay2 = +pay;
-            // myItem.amount = amount;
             setModalShow2(true);
             sessionStorage.setItem("toPay", (pay2-(props.price)).toString());
-
             organizationData(amount - 1);
-            // myProd.amount=amount - 1;
-            // setProd(store.getState().ItemsState.ItemsST.filter(item=>props.productId===item.productId)[0]);
 
           } else {
             console.log();
@@ -111,7 +114,7 @@ function AddRemoveItem(props: ItemModel1): JSX.Element {
       </Button>
       <Amount key={props.productId} productId={props.productId} amount={amount} totalPrice={props.totalPrice} CartID={props.CartID}/>
       {/* {amount} */}
-      <Button
+      <Button disabled={disableButton()}
         onClick={async () => {
           setAmount(amount + 1);
           // myItem.amount = amount;

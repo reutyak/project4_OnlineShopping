@@ -12,8 +12,39 @@ import { IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { addItemsST, deleteItemsST } from "../../redux/itemsState";
 import { ItemModel } from "../../Model/itemModel";
+import Amount from "../Amount/Amount";
 
 function OneItem(props: productModel): JSX.Element {
+  const state = sessionStorage.getItem("state");
+  const checkState=()=>{
+    if(state==="1"){
+      return <Card.Footer className="text-muted">
+      {" "}
+      <AddRemoveItem
+        key={props._id}
+        productId={props._id}
+        amount={0}
+        CartID={JSON.parse(localStorage.myCart)._id}
+        price={props.productPrice}
+        totalPrice={0}
+      /><IconButton aria-label="delete" onClick={deleteMe}>
+      <DeleteIcon />
+    </IconButton>
+    </Card.Footer>
+    }else{return <Card.Footer className="text-muted">
+    {" "}
+    <AddRemoveItem 
+      key={props._id}
+      productId={props._id}
+      amount={0}
+      CartID={JSON.parse(localStorage.myCart)._id}
+      price={props.productPrice}
+      totalPrice={0}
+    /><IconButton disabled aria-label="delete" onClick={deleteMe}>
+    <DeleteIcon />
+  </IconButton>
+  </Card.Footer>}
+  };
   const [categories, setCategories] = useState<categoryModel[]>(
     store.getState().categoryState.categoriesST
   );
@@ -40,9 +71,9 @@ function OneItem(props: productModel): JSX.Element {
   console.log(pay2);
   console.log(thisPay);
   store.dispatch(deleteItemsST(props._id));
-    //   store.dispatch(addItemsST(itemSave));
+      store.dispatch(addItemsST(itemSave));
 
-    // store.dispatch(deleteItemsST(props._id));
+    store.dispatch(deleteItemsST(props._id));
     sessionStorage.setItem("toPay",(pay2-(+thisPay)).toString())
   };
   
@@ -58,7 +89,7 @@ function OneItem(props: productModel): JSX.Element {
           <br></br>
           {props.productName}{" "}
         </Card.Header>
-        <Card.Body className="body">
+        <Card.Body className="body" >
           {/* <Card.Title></Card.Title> */}
           <Card.Text className="image"
 >
@@ -66,21 +97,13 @@ function OneItem(props: productModel): JSX.Element {
               className="image"
               src={props.productImage}
               alt="img"
-              style={{ height: 20 , width:20}}
-            />{" "}
+              style={{ height: 30 , width:30}}
+            />
           </Card.Text>
-          {
-            // <TotalP
-            //   _id={props._id}
-            //   productName={props.productName}
-            //   productCategory={props.productCategory}
-            //   productPrice={props.productPrice}
-            //   productImage={props.productImage}
-            // />
-            totalP()
-          }{" "}
+          <div className="total">{totalP()}</div>
         </Card.Body>
-        <Card.Footer className="text-muted">
+        {checkState()}
+        {/* <Card.Footer className="text-muted">
           {" "}
           <AddRemoveItem
             key={props._id}
@@ -92,7 +115,7 @@ function OneItem(props: productModel): JSX.Element {
           /><IconButton aria-label="delete" onClick={deleteMe}>
           <DeleteIcon />
         </IconButton>
-        </Card.Footer>
+        </Card.Footer> */}
       </Card>
     </div>
   );

@@ -86,7 +86,7 @@ const [num2, setNum2] = useState(-1);
           <body>
           <aside className="cart"><ViewCart/></aside>	
 
-          <Box sx={{ width: '100%' }}>
+          <Box sx={{ width: '160%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} indicatorColor="primary"
           textColor="inherit"

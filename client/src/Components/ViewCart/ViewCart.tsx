@@ -11,6 +11,7 @@ import { productModel } from "../../Model/productModel";
 import React from "react";
 import AddRemoveItem from "../AddRemoveItem/AddRemoveItem";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { ProSidebarProvider } from "react-pro-sidebar";
 
@@ -23,12 +24,15 @@ import OneItem from "../OneItem/OneItem";
 import ForPayment from "../ForPayment/ForPayment";
 
 function ViewCart(): JSX.Element {
+  const navigate = useNavigate();
+  const state = sessionStorage.getItem("state");
   const [list, setList] = useState<ItemModel[]>();
   const [products, setProducts] = React.useState<productModel[]>(
     store.getState().productState.productsST
   );
   function renderRow(props: ListChildComponentProps, item1: ItemModel) {
     const { index, style } = props;
+
     return (
       <ListItem style={style} key={index} component="div" disablePadding>
         <ListItemButton>
@@ -37,6 +41,9 @@ function ViewCart(): JSX.Element {
       </ListItem>
     );
   }
+  const checkState1 = ()=>{
+    if(state==="1"){return <Button onClick={checkout}><>Checkout</></Button> }else {return <Button onClick={checkout1}><>Back to continue shopping</></Button>}
+  };
   useEffect(() => {
     const myList = store.getState().ItemsState.ItemsST;
     setList(myList);
@@ -46,6 +53,16 @@ function ViewCart(): JSX.Element {
     setList(store.getState().ItemsState.ItemsST);
     console.log("subscribe");
   });
+
+  const checkout=async ()=>{
+    sessionStorage.setItem("state", "0");
+    await navigate("/payment");
+  };
+
+  const checkout1=async ()=>{
+    sessionStorage.setItem("state", "1");
+    await navigate("/user");
+  };
 
   return (
     <div className="ViewCart">
@@ -61,7 +78,7 @@ function ViewCart(): JSX.Element {
             </Menu>
           </Sidebar>
         </ProSidebarProvider>
-        <ForPayment/><Button>Checkout</Button>
+        <ForPayment/>{checkState1()}
       </Paper>
     </div>
   );

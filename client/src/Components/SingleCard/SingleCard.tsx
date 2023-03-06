@@ -27,10 +27,10 @@ function SingleCard(props:productModel): JSX.Element {
                       )[0].categoryName
                     }{" "}
                   </Typography>
-                  <Typography variant="h5" component="div">
+                  <Typography variant="h6" component="div">
                     {props.productName}{" "}
                   </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  <Typography sx={{ mb: 0.5 }} color="text.secondary">
                     {props.productPrice}&#36;{" "}
                   </Typography>
                   <Typography variant="body2">
@@ -38,13 +38,13 @@ function SingleCard(props:productModel): JSX.Element {
                       className="image"
                       src={props.productImage}
                       alt="img"
-                      style={{ height: 150 }}
-                    />
+                      style={{ height: 50 , width:50}}
+                      />
                   </Typography>
                 </CardContent>
 
                 <CardActions>
-                  <AddRemoveItem key = {props._id} productId={props._id} amount={0}  CartID={JSON.parse(localStorage.myCart)._id} price={props.productPrice} totalPrice={0} />
+                <AddRemoveItem key = {props._id} productId={props._id} amount={0}  CartID={JSON.parse(localStorage.myCart)._id} price={props.productPrice} totalPrice={0} />
                   
                 </CardActions>
                 {/* </React.Fragment> */}

@@ -42,6 +42,7 @@ function Login(): JSX.Element {
         date: new Date(Date.now()).toISOString()
       };
       sessionStorage.setItem("userName",myUser);
+      sessionStorage.setItem("state","1");
       let myRole = sessionStorage.getItem("role");
       console.log(myRole);
       if (await myLogin == "1") {

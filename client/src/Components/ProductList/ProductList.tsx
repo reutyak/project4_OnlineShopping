@@ -49,7 +49,7 @@ function ProductList(props: categoryModel): JSX.Element {
   );
   const [items, setItems] = useState<ItemModel[]>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(15);
+  const [cardsPerPage] = useState(8);
   const [categories, setCategories] = useState<categoryModel[]>(
     store.getState().categoryState.categoriesST
   );

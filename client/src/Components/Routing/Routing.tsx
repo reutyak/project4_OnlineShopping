@@ -6,6 +6,7 @@ import Admin from "../Admin/Admin";
 import Register from "../Register/Register";
 import AddProduct from "../AddProduct/AddProduct";
 import FirstPage from "../FirstPage/FirstPage";
+import Payment from "../Payment/Payment";
 
 function Routing(): JSX.Element {
     return (
@@ -15,6 +16,8 @@ function Routing(): JSX.Element {
                 <Route path = "/admin" element={<Admin/>}/>
                 <Route path = "/admin/addProduct" element={<AddProduct/>}/>
                 <Route path = "/register" element= {<Register/>}/>
+                <Route path = "/payment" element= {<Payment/>}/>
+
                 {/* <Route path = "/login" element= {<Login/>}/> */}
                 {/*<Route path = "/modal" element= {<Modal/>}/>
                 <Route path = "/admin/all" element={<VacationList/>}/>

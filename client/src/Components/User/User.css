@@ -1,16 +1,16 @@
 .User body{
 	display:flex;
     justify-content: left;
-    height: 100%;
-    width: 70%;
+    height: 600px;
+    width: 100%;
 }
 
 .User aside{
-    height: 100%;
+    height: 680px;
     width: 100%;
 
 }
 
 .cart{
-    width: 100%;
+    width: 80%;
 }

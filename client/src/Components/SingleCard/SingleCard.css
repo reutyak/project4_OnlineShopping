@@ -1,12 +1,19 @@
 .SingleCard {
-	width: 100%;
+	width: 220px;
+    height: 220px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    
+    flex-flow: column wrap;
+
 }
 .Card{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    flex-flow: column wrap;
+
+}
+.image{
+    width: 150px;
 }
