@@ -18,9 +18,9 @@ import { productModel } from "../../Model/productModel";
 import Amount from "../Amount/Amount";
 
 function AddRemoveItem(props: ItemModel1): JSX.Element {
-  const state = sessionStorage.getItem("state");
+  // const state = sessionStorage.getItem("state");
   const disableButton = ()=>{
-    if (state==="1"){
+    if (sessionStorage.getItem("state")==="1"){
       return false
     }else{return true}
   };

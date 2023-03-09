@@ -7,9 +7,11 @@ import { AppBar, Box, IconButton, InputBase, Link, Toolbar, Typography, alpha, s
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from "react-router";
-
 function Header(): JSX.Element {
-    const [name, setName]=useState(sessionStorage.getItem("userName"))
+    const [name, setName]=useState(sessionStorage.getItem("userName"));
+    const [search, setSearch] = useState("");
+    const navigate = useNavigate();
+    
     const restart = ()=>{
       localStorage.setItem("myToken",  "");
       localStorage.setItem("email", "");
@@ -41,22 +43,10 @@ function Header(): JSX.Element {
         justifyContent: 'center',
       }));
       
-      const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: 'inherit',
-        '& .MuiInputBase-input': {
-          padding: theme.spacing(1, 1, 1, 0),
-          // vertical padding + font size from searchIcon
-          paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-          transition: theme.transitions.create('width'),
-          width: '100%',
-          [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-              width: '20ch',
-            },
-          },
-        },
-      }));
+      const searchTo = ()=>{
+        sessionStorage.setItem("search",search);
+      }
+      
     return (
         <div className="Header">
             <Box sx={{ flexGrow: 1 }}>
@@ -93,15 +83,25 @@ function Header(): JSX.Element {
 
 online shopping 077-7777777
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
+          {/* <Search> */}
+          <input
+                className="Search"
+                type="text"
+                id="search"
+                name="search"
+                value={search}
+                placeholder="Search"
+                onChange={(event) => setSearch(event.target.value)}
+                required
+              >               
+              </input><Button variant="text" color="secondary" onClick={searchTo}><SearchIcon/></Button>
+            {/* <StyledInputBase
+                          onChange={(event) => setSearch(event.target.value)}
+
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+            /> */}
+          {/* </Search> */}
         </Toolbar>
       </AppBar>
     </Box>

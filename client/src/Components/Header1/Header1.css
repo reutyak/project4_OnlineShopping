@@ -1,4 +1,4 @@
-.Header {
+.Header1 {
 	text-align:center;
     width: 100%;
     /* border-top: 2px solid rgb(0, 0, 0);
@@ -8,7 +8,7 @@
 
 }
 
-.Header > div, .Header > button {
+.Header1 > div, .Header1 > button {
     color:rgb(32, 120, 253);
     font-weight: 900;
     font-size:large;
@@ -21,7 +21,7 @@
     margin-bottom: 0;
 }
 
-.Header img{
+.Header1 img{
     width: 70px;
     border-radius: 40px;
 }
@@ -34,16 +34,11 @@
     background-color: white;
 }
 
-.Header label, .Header input {
+.Header1 label, .Header1 input {
     text-align: center;
     font-size: 15px;
     margin-bottom: 10px;
     display:inline;
-    width: 10%;
+    width: 30%;
     margin: 0.5%;
-}
-
-.Search{
-    width: 10%;
-
 }

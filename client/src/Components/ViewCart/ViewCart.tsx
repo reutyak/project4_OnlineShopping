@@ -78,7 +78,7 @@ function ViewCart(): JSX.Element {
             </Menu>
           </Sidebar>
         </ProSidebarProvider>
-        <ForPayment/>{checkState1()}
+        <div className="pay"><ForPayment/></div>{checkState1()}
       </Paper>
     </div>
   );

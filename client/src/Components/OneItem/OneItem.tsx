@@ -32,7 +32,6 @@ function OneItem(props: productModel): JSX.Element {
     </IconButton>
     </Card.Footer>
     }else{return <Card.Footer className="text-muted">
-    {" "}
     <AddRemoveItem 
       key={props._id}
       productId={props._id}
@@ -80,7 +79,7 @@ function OneItem(props: productModel): JSX.Element {
   return (
     <div className="OneItem">
       <Card className="text-center">
-        <Card.Header>
+        <Card.Header className="head2">
           {
             categories.filter(
               (category) => category._id === props.productCategory
@@ -89,9 +88,9 @@ function OneItem(props: productModel): JSX.Element {
           <br></br>
           {props.productName}{" "}
         </Card.Header>
-        <Card.Body className="body" >
+        <div className="body" >
           {/* <Card.Title></Card.Title> */}
-          <Card.Text className="image"
+          <div className="image"
 >
             <img
               className="image"
@@ -99,9 +98,9 @@ function OneItem(props: productModel): JSX.Element {
               alt="img"
               style={{ height: 30 , width:30}}
             />
-          </Card.Text>
+          </div>
           <div className="total">{totalP()}</div>
-        </Card.Body>
+        </div>
         {checkState()}
         {/* <Card.Footer className="text-muted">
           {" "}

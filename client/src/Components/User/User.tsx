@@ -57,10 +57,18 @@ const [categories, setCategories]= useState<categoryModel[]>(store.getState().ca
 const theme = useTheme();
 const [value, setValue] = useState(0);
 const [num, setNum] = useState(0);
-const [num2, setNum2] = useState(-1);
-
+const [searchS, setSearchS] = useState(sessionStorage.getItem("search"));
+const view1 = ()=>{
+if(searchS===""){
+return <>{categories.map((category)=><TabPanel value={value} index={categories.map(function(o) { return o._id; }).indexOf(category._id)}>
+<ProductList _id={category._id} categoryName={category.categoryName}/>
+</TabPanel>)}</>
+}else{
+  return 
+}};
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    sessionStorage.setItem("search","");
   };
 
   const handleChangeIndex = (index: number) => {

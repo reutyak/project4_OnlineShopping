@@ -6,13 +6,20 @@
 
 }
 .ViewCart{
+	
+    width: 100%;
+    font-size: small;
+
+}
+
+/* .ViewCart{
 width: auto;
-}
-.Paper{
+} */
+/* .Paper{
     width: 100%;
-}
+} */
 .item{
-    width: 100%;
+    width: 70%;
     height: 100%;
     border:1px;
     border-color: black;
@@ -21,6 +28,8 @@ width: auto;
 
 .title {
     margin: 10px;
+    width: 70%;
+
 }
 
 

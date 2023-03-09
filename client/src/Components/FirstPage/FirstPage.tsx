@@ -9,8 +9,8 @@ import categoryServices from "../../services/categoryServices";
 import { categoryModel } from "../../Model/categoryModel";
 import { store } from "../../redux/store";
 import userServices from "../../services/userServices";
-import Header from "../Header/Header";
 import { Box, Grid, Paper, styled } from "@mui/material";
+import Header1 from "../Header1/Header1";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -52,7 +52,7 @@ useEffect(() => {
       
     return (
       <div className="FirstPage">
-        <header><Header /></header>
+        <header><Header1/></header>
         <main>        
           <Box className="Box" sx={{ flexGrow: 1 }}>
 
