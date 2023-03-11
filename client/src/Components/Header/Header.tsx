@@ -3,10 +3,11 @@ import "./Header.css";
 import Button from "@mui/material/Button";
 import logo from "../../assets/Logo2.png";
 import { useState } from "react";
-import { AppBar, Box, IconButton, InputBase, Link, Toolbar, Typography, alpha, styled } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, Toolbar, Typography} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from "react-router";
+import { store } from "../../redux/store";
+import { deleteSearchST, getSearchST } from "../../redux/searchState";
 function Header(): JSX.Element {
     const [name, setName]=useState(sessionStorage.getItem("userName"));
     const [search, setSearch] = useState("");
@@ -18,33 +19,15 @@ function Header(): JSX.Element {
       localStorage.setItem("role", "0");
       sessionStorage.setItem("userName","guest");
     }
-    const Search = styled('div')(({ theme }) => ({
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        '&:hover': {
-          backgroundColor: alpha(theme.palette.common.white, 0.25),
-        },
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(1),
-          width: 'auto',
-        },
-      }));
+    
       
-      const SearchIconWrapper = styled('div')(({ theme }) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }));
       
-      const searchTo = ()=>{
-        sessionStorage.setItem("search",search);
+      
+      const searchTo =  ()=>{
+        // store.dispatch(deleteSearchST());
+        store.dispatch(getSearchST(search));
+        // sessionStorage.setItem("search",search);
+        setSearch("");
       }
       
     return (
@@ -53,19 +36,6 @@ function Header(): JSX.Element {
       <AppBar position="static">
         <Toolbar>
         <div>Hello {name}</div>
-        
-        {/* <div className="Nav"><NavLink className="nav-link1" to="/"><header>Exit</header></NavLink></div>  */}
-
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
-
           <Typography
             variant="h6"
             noWrap
@@ -83,7 +53,6 @@ function Header(): JSX.Element {
 
 online shopping 077-7777777
           </Typography>
-          {/* <Search> */}
           <input
                 className="Search"
                 type="text"
@@ -91,32 +60,13 @@ online shopping 077-7777777
                 name="search"
                 value={search}
                 placeholder="Search"
-                onChange={(event) => setSearch(event.target.value)}
+                onChange={(event) => {store.dispatch(deleteSearchST()); setSearch(event.target.value)}}
                 required
               >               
               </input><Button variant="text" color="secondary" onClick={searchTo}><SearchIcon/></Button>
-            {/* <StyledInputBase
-                          onChange={(event) => setSearch(event.target.value)}
-
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            /> */}
-          {/* </Search> */}
         </Toolbar>
       </AppBar>
     </Box>
-			{/* <nav className=" MenuAdmin navbar navbar-expand-lg navbar-light bg-light"> */}
-                {/* <Button variant="contained" color="success">Search</Button>
-
-            <input
-              className="form-control"
-              type="text"
-            /> */}
-			{/* <Button variant="outlined" color="success"><NavLink  className="nav-link" to="/login">login</NavLink></Button> */}
-            {/* <div><NavLink className="nav-link" to="/admin/addVacation"><h6>Add Vacation</h6></NavLink></div> 
-            <div><NavLink className="nav-link" to="/admin/report"><h6>Reports</h6></NavLink></div> 
-            <div><NavLink className="nav-link" to="/"><h6>Exit</h6></NavLink></div>  */}
-        {/* </nav> */}
         </div>
     );
 }

@@ -7,7 +7,6 @@ function Amount(props:ItemModel): JSX.Element {
     const [myProdAm,setMyPro] =useState(store.getState().ItemsState.ItemsST);
     store.subscribe(() => {
         setMyPro(store.getState().ItemsState.ItemsST);
-        console.log("subscribe");
       });
     
     console.log(myProdAm);

@@ -16,6 +16,8 @@ import Box from '@mui/material/Box';
 import ProductList from "../ProductList/ProductList";
 import ViewCart from "../ViewCart/ViewCart"
 import ForPayment from "../ForPayment/ForPayment";
+import SearchResult from "../SearchResult/SearchResult";
+import { deleteSearchST } from "../../redux/searchState";
 interface TabPanelProps {
   children?: React.ReactNode;
   dir?: string;
@@ -57,17 +59,22 @@ const [categories, setCategories]= useState<categoryModel[]>(store.getState().ca
 const theme = useTheme();
 const [value, setValue] = useState(0);
 const [num, setNum] = useState(0);
-const [searchS, setSearchS] = useState(sessionStorage.getItem("search"));
-const view1 = ()=>{
-if(searchS===""){
-return <>{categories.map((category)=><TabPanel value={value} index={categories.map(function(o) { return o._id; }).indexOf(category._id)}>
-<ProductList _id={category._id} categoryName={category.categoryName}/>
-</TabPanel>)}</>
+const [searchS, setSearchS] = useState(store.getState().SearchState.SearchST);
+store.subscribe(() => {
+  setSearchS(store.getState().SearchState.SearchST);
+});
+const view1 = (category:categoryModel)=>{
+if(store.getState().SearchState.SearchST){
+return <SearchResult/>
 }else{
-  return 
+  console.log(searchS)
+  return <>
+  <ProductList _id={category._id} categoryName={category.categoryName}/>
+  </>
 }};
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    store.dispatch(deleteSearchST());
     sessionStorage.setItem("search","");
   };
 
@@ -104,7 +111,8 @@ return <>{categories.map((category)=><TabPanel value={value} index={categories.m
         </Tabs>
       </Box>
       {categories.map((category)=><TabPanel value={value} index={categories.map(function(o) { return o._id; }).indexOf(category._id)}>
-        <ProductList _id={category._id} categoryName={category.categoryName}/>
+        {/* <ProductList _id={category._id} categoryName={category.categoryName}/> */}
+        {view1(category)}
       </TabPanel>)}
     </Box>
     </body>		

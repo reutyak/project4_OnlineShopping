@@ -6,31 +6,14 @@ import { store } from "../../redux/store";
 import { productModel } from "../../Model/productModel";
 import productServices from "../../services/productServices";
 import { getAllProductsST } from "../../redux/productState";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Icon,
   Pagination,
-  Typography,
 } from "@mui/material";
 import { categoryModel } from "../../Model/categoryModel";
 import React from "react";
-
-import ModalRemove from "../ModalRemove/ModalRemove";
-import ModalAdd from "../ModalAdd/ModalAdd";
 import { ItemModel } from "../../Model/itemModel";
-import AddRemoveItem from "../AddRemoveItem/AddRemoveItem";
 import SingleCard from "../SingleCard/SingleCard";
-const addItem = (productID: string) => {};
 
-const removeItem = () => {};
 
 function ProductList(props: categoryModel): JSX.Element {
   const navigate = useNavigate();
@@ -43,6 +26,8 @@ function ProductList(props: categoryModel): JSX.Element {
         (item) => item.productCategory === props._id
       )
   );
+
+  
   const [items, setItems] = useState<ItemModel[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(8);
@@ -51,23 +36,17 @@ function ProductList(props: categoryModel): JSX.Element {
   );
 
   const pageCount = Math.ceil(products.length / cardsPerPage);
-
+  
   useEffect(() => {
     let myProducts = productServices.getAllProducts();
     store.dispatch(getAllProductsST(myProducts));
   }, [currentPage]);
 
   
-  //   const sortedProducts = products.sort(
-  //     (objA, objB) =>
-  //       new Date(objB.start_date).getTime() - new Date(objA.start_date).getTime()
-  //   );
-  // Get currCards
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = products.slice(indexOfFirstCard, indexOfLastCard);
 
-  // Change page
   const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   const handleChange = (event: any, value: any) => {
@@ -94,10 +73,6 @@ function ProductList(props: categoryModel): JSX.Element {
       <div className="displayCard">
         <div className="card">
           {currentCards
-            // .filter(
-            //   (item: { productCategory: string }) =>
-            //     item.productCategory === props._id
-            // )
             .map((item) => (
               <div className="Single">
                 <SingleCard

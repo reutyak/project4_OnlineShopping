@@ -102,19 +102,6 @@ function OneItem(props: productModel): JSX.Element {
           <div className="total">{totalP()}</div>
         </div>
         {checkState()}
-        {/* <Card.Footer className="text-muted">
-          {" "}
-          <AddRemoveItem
-            key={props._id}
-            productId={props._id}
-            amount={0}
-            CartID={JSON.parse(localStorage.myCart)._id}
-            price={props.productPrice}
-            totalPrice={0}
-          /><IconButton aria-label="delete" onClick={deleteMe}>
-          <DeleteIcon />
-        </IconButton>
-        </Card.Footer> */}
       </Card>
     </div>
   );
