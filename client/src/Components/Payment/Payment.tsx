@@ -9,6 +9,7 @@ import { store } from "../../redux/store";
 import OK from "../OK/OK";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import itemsServices from "../../services/itemsServices";
 function Payment(): JSX.Element {
     const { register, handleSubmit } = useForm<orderModel>();
     const [modalShowOK, setModal] = useState(false);
@@ -30,7 +31,9 @@ function Payment(): JSX.Element {
     const send = async (order: orderModel) => {
         console.log(order);
         orderServices.addOrder(order);
-setModal(true);
+        itemsServices.addItems(store.getState().ItemsState.ItemsST);
+        
+      setModal(true);
     };
     const toPay=()=>{
          let pay = sessionStorage.getItem("toPay");

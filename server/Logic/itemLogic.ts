@@ -30,8 +30,8 @@ const getItemsByCartId = async (Id:string):Promise<IItemModel[]>=>{
 };
 
 
-const addItem = async (item:IItemModel):Promise<IItemModel>=>{
-    return await new itemModel(item).save();
+const addItem = async (items:IItemModel[]):Promise<IItemModel[]>=>{
+    return await  itemModel.insertMany(items);
 }
 
 const updateItem = async(_id:any,item:IItemModel):Promise<IItemModel>=>{

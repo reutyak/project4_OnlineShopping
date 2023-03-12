@@ -87,7 +87,7 @@ function AddProduct(): JSX.Element {
     //     console.log(err.message);
     //   }
     try {
-      if (id == 0) {
+      if (id === 0) {
         productServices.addProduct(newProduct);
         setProducts(store.getState().productState.productsST);
         navigate("/admin");
@@ -140,7 +140,7 @@ function AddProduct(): JSX.Element {
       <div>
         <form className="add" onSubmit={handleSubmit(send)}>
           <h4 className="head">
-            {id == 0 ? "Add Product:" : "Update Product:"}
+            {id === 0 ? "Add Product:" : "Update Product:"}
           </h4>
           <div className="Alert">{alertOn()}</div>
           <label>Product Category:</label>

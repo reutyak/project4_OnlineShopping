@@ -3,12 +3,19 @@ import { Modal } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 import { store } from "../../redux/store";
 function OK(props: any): JSX.Element {
-    const myItems = store.getState().ItemsState.ItemsST;
-    const downloadTxtFile = () => {
+    // const myItems = store.getState().ItemsState.ItemsST;
+    const toPay = sessionStorage.getItem("toPay")||"";
+        const myItems = store.getState().ItemsState.ItemsST;
+const myText = myItems.map(item=>(store.getState().productState.productsST.filter(product=>product._id===item.productId)[0]).productName+" "+item.amount+" "+item.totalPrice);
+const downloadTxtFile = () => {
         const element = document.createElement("a");
-        const file = new Blob([JSON.stringify(myItems)],    
-                    {type: 'text/plain;charset=utf-8'});
-        element.href = URL.createObjectURL(file);
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(myText.join('\n'))+'\ntotalPrice: '+toPay);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        // const file = new Blob([JSON.stringify(myText)],    
+        //             {type: 'text/html;charset=utf-8'});
+        // element.href = URL.createObjectURL(file);
         element.download = "myFile.txt";
         document.body.appendChild(element);
         element.click();

@@ -66,19 +66,19 @@ itemsController.get(
   }else{response.status(401).json("You are no authorized!!!");}});
 
 itemsController.post("/",async (request: Request, response: Response, next: NextFunction) => {
-  if(userAuth(request,response)){  
-  try{ 
-    const newItem:IItemModel = request.body;
+  // if(userAuth(request,response)){  
+  // try{ 
+    const newItem:IItemModel[] = request.body;
     console.log(newItem);
     const itemAdded = await itemLogic.addItem(newItem);
     console.log(itemAdded);
-    response.status(201).json(itemAdded);
-    }catch(err){
-      return response.status(400).json({
-        success: false,
-      });
-    }
-  }else{response.status(401).json("You are no authorized!!!");}})
+    response.status(201).json(itemAdded);})
+    // }catch(err){
+    //   return response.status(400).json({
+    //     success: false,
+    //   });
+    // }
+  // }else{response.status(401).json("You are no authorized!!!");}})
 
   // delete information from DB
   itemsController.delete("/delete/:id", async (request: Request, response: Response, next: NextFunction) => {
